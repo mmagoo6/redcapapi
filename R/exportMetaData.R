@@ -91,6 +91,7 @@ function(rcon, fields=NULL, forms=NULL,
   if (x$status_code != 200) return(redcap_error(x, error_handling))
   
   x <- as.character(x)
+  # https://stackoverflow.com/questions/17291287/how-to-identify-delete-non-utf-8-characters-in-r
   x <- iconv(x, "utf8", "utf8", sub = "")
   utils::read.csv(text = x, 
                   stringsAsFactors = FALSE, 
