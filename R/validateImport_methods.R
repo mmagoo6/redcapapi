@@ -41,7 +41,7 @@ validate_import_date <- function(x, field_name, field_min, field_max, logfile)
     )
   }
   
-  w_low <- which(x < as.POSIXct(field_min))
+  w_low <- which(x < as.POSIXct(field_min,origin=origin))
   print_validation_message(
     field_name,
     indices = w_low,
@@ -50,7 +50,7 @@ validate_import_date <- function(x, field_name, field_min, field_max, logfile)
     logfile = logfile
   )
   
-  w_high <- which(x > as.POSIXct(field_max))
+  w_high <- which(x > as.POSIXct(field_max,origin=origin))
   print_validation_message(
     field_name,
     indices = w_high,
